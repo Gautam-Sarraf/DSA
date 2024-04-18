@@ -1,0 +1,48 @@
+class node {
+    int data;
+    node next;
+
+    node(int val){
+       this.data = val;
+       this.next = null;
+    }
+
+
+public class linkedlist {
+    node head = null;
+    int size = 0;
+    public static node insertAtbegining(node first, int val){
+        node newnode = new node(val); 
+        newnode.next = first;
+        first = newnode;
+        return first;
+
+    }
+    public static void traverse(node first){
+        node temp = first;
+        while (temp != null){
+            System.out.println(temp.data + " ");
+            temp = temp.next;
+            
+        }
+    }
+    public static void main(String[] args) {
+       node first = new node(12);
+      insertAtbegining(first, 11);
+      insertAtbegining(first, 10);
+      insertAtbegining(first, 9);
+      insertAtbegining(first, 8);
+      insertAtbegining(first, 7);
+      System.out.println("Linked list");
+
+linkedlist.traverse(first);
+
+
+
+    //    node second = new node(4);
+    //    first.next = second;
+
+
+    }
+}
+}
