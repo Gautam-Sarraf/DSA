@@ -1,0 +1,85 @@
+import java.util.*;
+
+class TreeNode {
+    int value;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int value) {
+        this.value = value;
+        left = right = null;
+    }
+}
+
+class BinaryTree {
+    TreeNode root;
+
+    BinaryTree() {
+        root = null;
+    }
+
+   
+    void levelOrderTraversal() {
+        if (root == null) {
+            return;
+        }
+
+       
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+           
+            TreeNode currentNode = queue.poll();
+
+            
+            System.out.print(currentNode.value + " ");
+
+            
+            if (currentNode.left != null) {
+                queue.add(currentNode.left);
+            }
+
+           
+            if (currentNode.right != null) {
+                queue.add(currentNode.right);
+            }
+        }
+    }
+
+ 
+    void insert(int value) {
+        root = insertRec(root, value);
+    }
+
+    TreeNode insertRec(TreeNode root, int value) {
+        if (root == null) {
+            root = new TreeNode(value);
+            return root;
+        }
+
+        if (value < root.value) {
+            root.left = insertRec(root.left, value);
+        } else if (value > root.value) {
+            root.right = insertRec(root.right, value);
+        }
+
+        return root;
+    }
+}
+
+public class binary_tree {
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+
+        // Insert some nodes
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(15);
+        tree.insert(2);
+        tree.insert(7);
+        tree.insert(12);
+        tree.insert(20);
+        tree.levelOrderTraversal(); 
+    }
+}
